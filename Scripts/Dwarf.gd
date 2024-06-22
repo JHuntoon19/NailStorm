@@ -14,6 +14,7 @@ func _process(delta):
 	#Handle Jumps
 	if(Input.is_action_just_pressed("Jump") and is_on_floor()):
 		velocity.y = jumpVel
+		$AudioStreamPlayer2D2.play()
 	#Get direction for movement
 	direction = Input.get_axis("Left", "Right")
 	#Changes the velocity depending on the direction
