@@ -13,6 +13,7 @@ func _process(delta):
 	if(not is_on_floor()):
 		velocity.y += gravity * delta
 	if(near):
+		direction = (Globals.dwarfPos - position).normalized()
 		velocity.x = direction.x * speed
 		if(not jumping and not dead):
 			print("Jump")
@@ -32,8 +33,7 @@ func hit():
 	$AnimationPlayer.play("Dead")
 
 
-func _on_chase_area_body_entered(body):
-	direction = (body.position - position).normalized()
+func _on_chase_area_body_entered(_body):
 	near = true
 
 

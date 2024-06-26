@@ -7,6 +7,7 @@ var jumpVel : int = -300
 @onready var sprite = $Sprite2D
 signal respawn()
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var health : int = 100
 func _process(delta):
 	#Add gravity
 	if(not is_on_floor()):
@@ -38,6 +39,12 @@ func _process(delta):
 	elif (direction < 0):
 		sprite.flip_h = true
 	move_and_slide()
+	#Update dwarf position in globals variable
+	Globals.dwarfPos = position
+	#Update health in globals
+	Globals.dwarfHealth = health
 
 func hit():
-	respawn.emit()
+	health -= 10
+	if(health <= 0):
+		respawn.emit()

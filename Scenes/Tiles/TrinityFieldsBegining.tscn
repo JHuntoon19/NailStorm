@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jl0as2et1jem"]
+
+[ext_resource type="AudioStream" uid="uid://daje23eb58t61" path="res://Audio/Music/Trinity_Fields_Beginning.wav" id="1_a2tlk"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_a2tlk")

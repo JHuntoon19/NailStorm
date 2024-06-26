@@ -3,6 +3,8 @@ extends Node2D
 func _ready():
 	#Hides the cursor
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+func _process(_delta):
+	$UI/HealthBar.value = Globals.dwarfHealth
 #Resets dwarf position to the starting point
 func respawn():
 	get_tree().reload_current_scene()

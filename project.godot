@@ -15,6 +15,11 @@ run/main_scene="res://Scenes/level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://Scripts/Globals.gd"
+TrinityFieldsBegining="*res://Audio/Music/TrinityFieldsBegining.tscn"
+
 [input]
 
 Left={
