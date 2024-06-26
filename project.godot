@@ -46,6 +46,7 @@ Swing={
 2d_physics/layer_2="Dwarf"
 2d_physics/layer_3="Hammer"
 2d_physics/layer_4="Nail"
+2d_physics/layer_5="Dead"
 
 [rendering]
 

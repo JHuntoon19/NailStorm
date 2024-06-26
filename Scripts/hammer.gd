@@ -5,10 +5,13 @@ func _process(_delta):
 	if(Input.is_action_just_pressed("Swing")):
 		animation_player.play("Attack")
 
-func _on_area_entered(area):
-	area.hit()
+
 
 func startCol():
 	monitoring = true
 func endCol():
 	monitoring = false
+
+
+func _on_body_entered(body):
+	body.hit()

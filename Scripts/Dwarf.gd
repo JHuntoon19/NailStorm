@@ -5,7 +5,7 @@ var walking : bool = false
 var jumpVel : int = -300
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite2D
-
+signal respawn()
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _process(delta):
 	#Add gravity
@@ -38,3 +38,6 @@ func _process(delta):
 	elif (direction < 0):
 		sprite.flip_h = true
 	move_and_slide()
+
+func hit():
+	respawn.emit()
