@@ -5,7 +5,8 @@ var speed : int = 75
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dead : bool = false
 var jumping : bool = false
-var jumpHeight : int = -175
+var jumpHeight : int = -180
+var hitting : bool = false
 func ready():
 	$AnimationPlayer.play("Idle")
 func _process(delta):
@@ -15,8 +16,7 @@ func _process(delta):
 	if(near):
 		direction = (Globals.dwarfPos - position).normalized()
 		velocity.x = direction.x * speed
-		if(not jumping and not dead):
-			print("Jump")
+		if(not jumping and not dead and not hitting):
 			jumping = true
 			velocity.y = jumpHeight
 			$JumpTimer.start()
@@ -31,22 +31,16 @@ func _process(delta):
 func hit():
 	$AudioStreamPlayer2D.play()
 	$AnimationPlayer.play("Dead")
-
-
 func _on_chase_area_body_entered(_body):
 	near = true
-
-
 func _on_chase_area_body_exited(_body):
 	near = false
-
 func deadFunc():
 	dead = true
 	$DwarfHitArea.monitoring = false
 func _on_dwarf_hit_area_body_entered(body):
-	print("hit")
-	body.hit()
-
-
+	hitting = true
 func _on_jump_timer_timeout():
 	jumping = false
+func _on_dwarf_hit_area_body_exited(body):
+	hitting = false

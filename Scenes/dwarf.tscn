@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqrss0cqs2rsk"]
+[gd_scene load_steps=24 format=3 uid="uid://bqrss0cqs2rsk"]
 
 [ext_resource type="Script" path="res://Scripts/Dwarf.gd" id="1_juyjj"]
-[ext_resource type="Texture2D" uid="uid://x7u4xapi0fg" path="res://graphics/Dwarf-SheetBetter.png" id="2_0xhwk"]
+[ext_resource type="Texture2D" uid="uid://bubx2srjelyvs" path="res://graphics/Dwarf1-Sheet.png" id="2_gwuc0"]
 [ext_resource type="AudioStream" uid="uid://c0m62qy5wynqj" path="res://Audio/Step.wav" id="3_ifptg"]
+[ext_resource type="AudioStream" uid="uid://cw3yf62tuvljs" path="res://Audio/BigJump.mp3" id="3_ovt43"]
 [ext_resource type="AudioStream" uid="uid://cbbf41ecp8xuk" path="res://Audio/Jump.wav" id="4_xchda"]
+[ext_resource type="AudioStream" uid="uid://dg7xc02kv6l7m" path="res://Audio/JumpThump.mp3" id="6_yyjtf"]
+[ext_resource type="Texture2D" uid="uid://cbvs5mu6xsimu" path="res://graphics/circ.png" id="7_teihp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grge7"]
 size = Vector2(14, 21)
@@ -25,6 +28,18 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5v1n1"]
 resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
 
 [sub_resource type="Animation" id="Animation_1mto7"]
 length = 0.001
@@ -43,10 +58,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/path = NodePath("Audio/Step:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts/Dust:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -61,7 +88,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/path = NodePath("Audio/Step:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,6 +109,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Parts/Dust:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qk613"]
 _data = {
@@ -91,15 +130,68 @@ _data = {
 "Walk": SubResource("Animation_e3h5h")
 }
 
+[sub_resource type="Gradient" id="Gradient_1ge76"]
+colors = PackedColorArray(0.433555, 6.43508e-05, 0.394774, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w53v4"]
+gradient = SubResource("Gradient_1ge76")
+
+[sub_resource type="Curve" id="Curve_nxliy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1iv1b"]
+curve = SubResource("Curve_nxliy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bv6ey"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 11.85, 0)
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_curve = SubResource("CurveTexture_1iv1b")
+color_ramp = SubResource("GradientTexture1D_w53v4")
+
+[sub_resource type="Gradient" id="Gradient_x7w30"]
+offsets = PackedFloat32Array(0, 0.508197, 1)
+colors = PackedColorArray(0.454902, 0.266667, 0.0901961, 0, 0.282353, 0.164706, 0.054902, 0.788235, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fa4aq"]
+gradient = SubResource("Gradient_x7w30")
+
+[sub_resource type="Curve" id="Curve_nkkik"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xmof2"]
+curve = SubResource("Curve_nkkik")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ue6qp"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 11.395, 0)
+direction = Vector3(-1, 0, 0)
+spread = 25.0
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_xmof2")
+color_ramp = SubResource("GradientTexture1D_fa4aq")
+
 [node name="Dwarf" type="CharacterBody2D"]
 top_level = true
 z_index = 2
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_juyjj")
 
 [node name="Sheet" type="Sprite2D" parent="."]
-texture = ExtResource("2_0xhwk")
-hframes = 5
+texture = ExtResource("2_gwuc0")
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -110,8 +202,39 @@ libraries = {
 "": SubResource("AnimationLibrary_qk613")
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 13)
+collision_mask = 16
+collide_with_areas = true
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="BigJump" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_ovt43")
+
+[node name="Step" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("3_ifptg")
 
-[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+[node name="Jump" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("4_xchda")
+
+[node name="JumpThump" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_yyjtf")
+
+[node name="Parts" type="Node2D" parent="."]
+
+[node name="BigJump" type="GPUParticles2D" parent="Parts"]
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_bv6ey")
+texture = ExtResource("7_teihp")
+lifetime = 0.2
+one_shot = true
+
+[node name="Dust" type="GPUParticles2D" parent="Parts"]
+emitting = false
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_ue6qp")
+texture = ExtResource("7_teihp")
+lifetime = 0.3
+one_shot = true

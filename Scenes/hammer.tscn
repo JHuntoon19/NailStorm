@@ -296,7 +296,6 @@ hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.492403, -0.0868238)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3em0p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

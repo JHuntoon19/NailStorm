@@ -3,19 +3,32 @@ var speed : int = 100
 var direction : float = 0
 var walking : bool = false
 var jumpVel : int = -220
+var springVel : int = -440
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sheet
 signal respawn()
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health : int = 100
+@onready var ray_cast = $RayCast2D
+@onready var jump = $Audio/Jump
+@onready var big_jump = $Audio/BigJump
+@onready var jump_thump = $Audio/JumpThump
+@onready var big_jump_parts = $Parts/BigJump
+
 func _process(delta):
 	#Add gravity
 	if(not is_on_floor()):
 		velocity.y += gravity * delta
 	#Handle Jumps
-	if(Input.is_action_just_pressed("Jump") and is_on_floor()):
-		velocity.y = jumpVel
-		$AudioStreamPlayer2D2.play()
+	if(Input.is_action_just_pressed("Jump")):
+		if(ray_cast.is_colliding()):
+			velocity.y = springVel 
+			big_jump_parts.emitting = true
+			big_jump.play()
+			jump_thump.play()
+		elif(is_on_floor()):
+			velocity.y = jumpVel
+			jump.play()
 	#Get direction for movement
 	direction = Input.get_axis("Left", "Right")
 	#Changes the velocity depending on the direction
