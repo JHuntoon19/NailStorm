@@ -1,47 +1,35 @@
 [gd_scene load_steps=19 format=3 uid="uid://6j3p755eg4he"]
 
-[ext_resource type="Texture2D" uid="uid://bucb68ooptyfy" path="res://graphics/hammer-Sheet.png" id="1_2qmwa"]
 [ext_resource type="Script" path="res://Scripts/hammer.gd" id="1_2yyc5"]
+[ext_resource type="Texture2D" uid="uid://cw5e1kvpmdjj3" path="res://graphics/HammerTime.png" id="2_nnhb0"]
 [ext_resource type="Texture2D" uid="uid://cbvs5mu6xsimu" path="res://graphics/circ.png" id="3_tm2jf"]
 [ext_resource type="AudioStream" uid="uid://bsb8sow2t6p3d" path="res://Audio/hitwav.wav" id="4_olt4u"]
 [ext_resource type="AudioStream" uid="uid://bw1c64lm2frej" path="res://Audio/swoosh.wav" id="5_fggjv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3em0p"]
-size = Vector2(54, 22)
+size = Vector2(15.1194, 8.0521)
 
 [sub_resource type="Animation" id="Animation_l1wv5"]
 resource_name = "Attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [7, 8, 9, 10, 11, 12, 13, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.174533, -0.349066, -0.523599, -0.698132, -1.0472, 0.436332, 0.610865, 0.698132, 0.785398, -0.261799]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.6, 1),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -52,22 +40,34 @@ tracks/2/keys = {
 "method": &"endCol"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitExpo:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HitExpo:emitting")
+tracks/3/path = NodePath("Charge:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Charge:emitting")
+tracks/4/path = NodePath("Charge2:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -79,26 +79,26 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Charge2:playing")
+tracks/5/path = NodePath("Swoosh:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Swoosh:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 0]
 }
 
 [sub_resource type="Animation" id="Animation_djemh"]
@@ -235,8 +235,8 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_icb3t"]
-offsets = PackedFloat32Array(0, 0.754098, 1)
-colors = PackedColorArray(0.705882, 0.12549, 0.164706, 1, 0.141176, 0.623529, 0.870588, 0.486275, 0.141176, 0.623529, 0.870588, 0)
+offsets = PackedFloat32Array(0, 0.45082, 1)
+colors = PackedColorArray(0.705882, 0.12549, 0.164706, 1, 0.141176, 0.623529, 0.870588, 0.203922, 0.141176, 0.623529, 0.870588, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_poscr"]
 gradient = SubResource("Gradient_icb3t")
@@ -248,6 +248,8 @@ spread = 180.0
 initial_velocity_min = 95.89
 initial_velocity_max = 369.86
 gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.5
 color_ramp = SubResource("GradientTexture1D_poscr")
 
 [sub_resource type="Gradient" id="Gradient_ma35k"]
@@ -268,14 +270,15 @@ particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 0.0
-emission_ring_radius = 49.165
-emission_ring_inner_radius = 48.0
+emission_ring_radius = 15.0
+emission_ring_inner_radius = 14.0
 direction = Vector3(0, 0, 0)
 spread = 180.0
 initial_velocity_min = 15.0
 initial_velocity_max = 25.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.3
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_ma3qo")
 color_ramp = SubResource("GradientTexture1D_47e08")
 
@@ -287,14 +290,13 @@ monitoring = false
 script = ExtResource("1_2yyc5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 14)
-texture = ExtResource("1_2qmwa")
+position = Vector2(-0.404378, 8.05211)
+texture = ExtResource("2_nnhb0")
 hframes = 7
-vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -1)
+position = Vector2(-0.492403, -0.0868238)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3em0p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -308,7 +310,7 @@ emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_ci7qs")
 texture = ExtResource("3_tm2jf")
-lifetime = 0.3
+lifetime = 0.2
 one_shot = true
 
 [node name="Charge" type="GPUParticles2D" parent="."]

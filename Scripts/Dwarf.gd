@@ -2,9 +2,9 @@ extends CharacterBody2D
 var speed : int = 100
 var direction : float = 0
 var walking : bool = false
-var jumpVel : int = -300
+var jumpVel : int = -220
 @onready var animation_player = $AnimationPlayer
-@onready var sprite = $Sprite2D
+@onready var sprite = $Sheet
 signal respawn()
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health : int = 100

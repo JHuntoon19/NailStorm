@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://bhhkyv3ecyu5e"]
 
 [ext_resource type="Script" path="res://Scripts/nail.gd" id="1_pmys5"]
-[ext_resource type="Texture2D" uid="uid://dj0d52hxku5o3" path="res://graphics/Nail-Sheet.png" id="2_hely4"]
+[ext_resource type="Texture2D" uid="uid://cguht7na0a7wh" path="res://graphics/Nail2.png" id="2_whxoo"]
 [ext_resource type="Texture2D" uid="uid://cbvs5mu6xsimu" path="res://graphics/circ.png" id="3_2uw0x"]
 [ext_resource type="AudioStream" uid="uid://b74hrakqqpxs5" path="res://Audio/Hit.mp3" id="4_omxse"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eapu"]
-size = Vector2(29, 30)
+size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_ej5sa"]
 resource_name = "Dead"
@@ -174,7 +174,7 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_b8fir"]
-colors = PackedColorArray(0.468327, 1.10099e-06, 1.68458e-07, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0.49114, 0.217561, 0.381424, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bwuxy"]
 gradient = SubResource("Gradient_b8fir")
@@ -190,17 +190,18 @@ curve = SubResource("Curve_yvg78")
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 30.0
-initial_velocity_min = 85.0
-initial_velocity_max = 100.0
+initial_velocity_min = 100.0
+initial_velocity_max = 185.0
 gravity = Vector3(0, 0, 0)
+scale_min = 0.5
 scale_curve = SubResource("CurveTexture_57o33")
 color_ramp = SubResource("GradientTexture1D_bwuxy")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkdxm"]
-radius = 150.0
+radius = 44.7214
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4o8e"]
-size = Vector2(29, 30)
+size = Vector2(16, 16)
 
 [node name="Nail" type="CharacterBody2D"]
 collision_layer = 8
@@ -208,12 +209,11 @@ collision_mask = 13
 script = ExtResource("1_pmys5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_hely4")
+texture = ExtResource("2_whxoo")
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+visible = false
 shape = SubResource("RectangleShape2D_7eapu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -224,8 +224,10 @@ libraries = {
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, 14)
 emitting = false
+amount = 15
 process_material = SubResource("ParticleProcessMaterial_wct7m")
 texture = ExtResource("3_2uw0x")
+lifetime = 0.75
 one_shot = true
 speed_scale = 2.5
 
@@ -241,11 +243,11 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_fkdxm")
 
 [node name="DwarfHitArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DwarfHitArea"]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_k4o8e")
 
 [node name="JumpTimer" type="Timer" parent="."]

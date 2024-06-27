@@ -5,7 +5,7 @@ var speed : int = 75
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dead : bool = false
 var jumping : bool = false
-var jumpHeight : int = -250
+var jumpHeight : int = -175
 func ready():
 	$AnimationPlayer.play("Idle")
 func _process(delta):
