@@ -3,6 +3,7 @@ extends Node2D
 func _ready():
 	#Hides the cursor
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+	#Press escape key to quit application, mainly used to quickly  exit and debug
 func _process(_delta):
 	if(Input.is_action_just_pressed("Quit")):
 		get_tree().call_deferred("quit")
@@ -12,16 +13,10 @@ func respawn():
 
 #Signal recieved from the death zone
 func _on_death_zone_respawn():
-	respawn()
-
-
-func _on_dwarf_respawn():
-	get_tree().call_deferred("reload_current_scene")
-	
-
+	respawn()	
+#Plays the sound effect when the camera transfers rooms
 func playWoosh():
 	$Audio/Woosh.play()
-
-
+#Camera sends this signal to alert the level that the room changed
 func _on_room_transition_camera_level_alert():
 	playWoosh()

@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.174533, -0.349066, -0.523599, -0.698132, -1.0472, 0.436332, 0.610865, 0.698132, 0.785398, -0.261799]
+"values": [0.261799, 0.436332, 0.610865, 0.785398, 0.959931, 1.13446, -0.785398, -0.959931, -1.13446, -1.309, 0.261799]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -125,7 +125,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.261799]
+"values": [0.261799]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -234,24 +234,6 @@ _data = {
 "RESET": SubResource("Animation_lw624")
 }
 
-[sub_resource type="Gradient" id="Gradient_icb3t"]
-offsets = PackedFloat32Array(0, 0.45082, 1)
-colors = PackedColorArray(0.705882, 0.12549, 0.164706, 1, 0.141176, 0.623529, 0.870588, 0.203922, 0.141176, 0.623529, 0.870588, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_poscr"]
-gradient = SubResource("Gradient_icb3t")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ci7qs"]
-particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-spread = 180.0
-initial_velocity_min = 95.89
-initial_velocity_max = 369.86
-gravity = Vector3(0, 0, 0)
-scale_min = 0.2
-scale_max = 0.5
-color_ramp = SubResource("GradientTexture1D_poscr")
-
 [sub_resource type="Gradient" id="Gradient_ma35k"]
 colors = PackedColorArray(1, 1, 1, 0, 0.156863, 0.360784, 0.768627, 0.486275)
 
@@ -282,6 +264,24 @@ scale_max = 0.5
 scale_curve = SubResource("CurveTexture_ma3qo")
 color_ramp = SubResource("GradientTexture1D_47e08")
 
+[sub_resource type="Gradient" id="Gradient_icb3t"]
+offsets = PackedFloat32Array(0, 0.45082, 1)
+colors = PackedColorArray(0.705882, 0.12549, 0.164706, 1, 0.141176, 0.623529, 0.870588, 0.203922, 0.141176, 0.623529, 0.870588, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_poscr"]
+gradient = SubResource("Gradient_icb3t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ci7qs"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 95.89
+initial_velocity_max = 369.86
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_poscr")
+
 [node name="Hammer" type="Area2D"]
 rotation = -0.174533
 collision_layer = 4
@@ -304,20 +304,22 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="HitExpo" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_ci7qs")
-texture = ExtResource("3_tm2jf")
-lifetime = 0.2
-one_shot = true
-
 [node name="Charge" type="GPUParticles2D" parent="."]
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_g4rga")
 texture = ExtResource("3_tm2jf")
 one_shot = true
 speed_scale = 3.0
+
+[node name="HitExpo" type="GPUParticles2D" parent="."]
+position = Vector2(-2.30295e-07, 6.17073e-08)
+scale = Vector2(1, 1)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_ci7qs")
+texture = ExtResource("3_tm2jf")
+lifetime = 0.2
+one_shot = true
 
 [node name="Charge2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_olt4u")

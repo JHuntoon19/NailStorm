@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bqrss0cqs2rsk"]
+[gd_scene load_steps=25 format=3 uid="uid://bqrss0cqs2rsk"]
 
 [ext_resource type="Script" path="res://Scripts/Dwarf.gd" id="1_juyjj"]
 [ext_resource type="Texture2D" uid="uid://bubx2srjelyvs" path="res://graphics/Dwarf1-Sheet.png" id="2_gwuc0"]
@@ -182,6 +182,9 @@ scale_max = 0.3
 scale_curve = SubResource("CurveTexture_xmof2")
 color_ramp = SubResource("GradientTexture1D_fa4aq")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6ymp"]
+size = Vector2(12, 6)
+
 [node name="Dwarf" type="CharacterBody2D"]
 top_level = true
 z_index = 2
@@ -201,11 +204,6 @@ shape = SubResource("RectangleShape2D_grge7")
 libraries = {
 "": SubResource("AnimationLibrary_qk613")
 }
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 13)
-collision_mask = 16
-collide_with_areas = true
 
 [node name="Audio" type="Node2D" parent="."]
 
@@ -238,3 +236,14 @@ process_material = SubResource("ParticleProcessMaterial_ue6qp")
 texture = ExtResource("7_teihp")
 lifetime = 0.3
 one_shot = true
+
+[node name="NailDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NailDetection"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_m6ymp")
+
+[connection signal="body_entered" from="NailDetection" to="." method="nail_body_entered"]
+[connection signal="body_exited" from="NailDetection" to="." method="_on_nail_detection_body_exited"]

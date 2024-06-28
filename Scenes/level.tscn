@@ -35,6 +35,5 @@ visible = false
 
 [node name="Audio" type="Node" parent="."]
 
-[connection signal="respawn" from="Dwarf" to="." method="_on_dwarf_respawn"]
 [connection signal="levelAlert" from="RoomTransitionCamera" to="." method="_on_room_transition_camera_level_alert"]
 [connection signal="respawn" from="DeathZone" to="." method="_on_death_zone_respawn"]
