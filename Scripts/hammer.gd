@@ -5,9 +5,6 @@ func _process(_delta):
 	if(Input.is_action_just_pressed("Swing")):
 		animation_player.play("Attack")
 
-func _physics_process(delta):
-	pass
-
 func startCol():
 	monitoring = true
 func endCol():

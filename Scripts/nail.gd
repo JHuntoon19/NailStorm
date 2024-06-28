@@ -38,9 +38,9 @@ func _on_chase_area_body_exited(_body):
 func deadFunc():
 	dead = true
 	$DwarfHitArea.monitoring = false
-func _on_dwarf_hit_area_body_entered(body):
+func _on_dwarf_hit_area_body_entered(_body):
 	hitting = true
 func _on_jump_timer_timeout():
 	jumping = false
-func _on_dwarf_hit_area_body_exited(body):
+func _on_dwarf_hit_area_body_exited(_body):
 	hitting = false

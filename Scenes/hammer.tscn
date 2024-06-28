@@ -290,12 +290,12 @@ monitoring = false
 script = ExtResource("1_2yyc5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.404378, 8.05211)
+position = Vector2(0.578027, -9.03692)
 texture = ExtResource("2_nnhb0")
 hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.492403, -0.0868238)
+position = Vector2(0.171245, -18.2475)
 shape = SubResource("RectangleShape2D_3em0p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
