@@ -67,38 +67,38 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Charge2:playing")
+tracks/4/path = NodePath("Swoosh:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Swoosh:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Sprite2D:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Charge2:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_djemh"]
@@ -205,7 +205,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Charge2:playing")
+tracks/4/path = NodePath("Swoosh:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -217,7 +217,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Swoosh:playing")
+tracks/5/path = NodePath("Charge2:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -313,7 +313,6 @@ speed_scale = 3.0
 
 [node name="HitExpo" type="GPUParticles2D" parent="."]
 position = Vector2(-2.30295e-07, 6.17073e-08)
-scale = Vector2(1, 1)
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_ci7qs")
@@ -321,12 +320,11 @@ texture = ExtResource("3_tm2jf")
 lifetime = 0.2
 one_shot = true
 
-[node name="Charge2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_olt4u")
-max_distance = 150.0
-
 [node name="Swoosh" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_fggjv")
 volume_db = 10.0
+
+[node name="Charge2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_olt4u")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk4dbrakrp3iu"]
+[gd_scene load_steps=7 format=3 uid="uid://dk4dbrakrp3iu"]
 
 [ext_resource type="PackedScene" uid="uid://bdjcjs3mssi42" path="res://Scenes/level.tscn" id="1_2w8ca"]
 [ext_resource type="PackedScene" uid="uid://bgprp1ktxrmcc" path="res://Scenes/Level/level_2_tiles.tscn" id="2_4yvmo"]
 [ext_resource type="PackedScene" uid="uid://bhhkyv3ecyu5e" path="res://Scenes/nail.tscn" id="3_bruh5"]
 [ext_resource type="Texture2D" uid="uid://bvoyitc6lbqpx" path="res://graphics/SkyBackground.png" id="3_gfuue"]
 [ext_resource type="AudioStream" uid="uid://bifbwtpssdv7c" path="res://Audio/Woosh.mp3" id="6_i8rm8"]
+[ext_resource type="PackedScene" uid="uid://bwa2ak3j582tm" path="res://Scenes/checkpoint.tscn" id="6_oqu51"]
 
 [node name="Level" instance=ExtResource("1_2w8ca")]
 
@@ -21,16 +22,12 @@ layer_0/tile_data = PackedInt32Array(65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 6553
 layer_1/tile_data = PackedInt32Array(-4, 131072, 2, -196607, 65536, 2, -327673, 65536, 2, -393205, 65536, 2, 65554, 131072, 3, 262157, 65536, 2, 262163, 65536, 3, 196633, 65536, 2, 32, 65536, 2, -65499, 0, 4, -131031, 131072, 3, 47, 0, 5, 53, 65536, 2, 131128, 65536, 2, -2, 0, 2, -262142, 0, 2, -327672, 65536, 3, 262159, 0, 2, 262165, 0, 2, 36, 0, 2, -65490, 0, 2, -3, 65536, 3, -262140, 0, 3, 65563, 0, 3, 65587, 0, 3, -65540, 131072, 1, -131076, 131072, 0, 262158, 131072, 2, 196622, 131072, 0, 131098, 131072, 2, 65562, 131072, 1, 26, 131072, 1, -65510, 131072, 0, 65552, 131072, 3, 65553, 131072, 3, 65555, 131072, 3, 65556, 131072, 3, -131032, 131072, 3, -131030, 131072, 3, -1, 0, 4, 262161, 0, 4, 65588, 0, 5, -131072, 65536, 4, 131132, 262144, 5, -196596, 131072, 3, -196595, 131072, 3, -196594, 131072, 3, -196593, 0, 2, -131054, 0, 3)
 
 [node name="Dwarf" parent="." index="3"]
-position = Vector2(0, 0)
+position = Vector2(3, 0)
 
-[node name="RoomTransitionCamera" parent="." index="4"]
-position = Vector2(262, -54)
-position_smoothing_speed = 10.0
+[node name="DeathZone" parent="." index="4"]
+position = Vector2(159, 97)
 
-[node name="DeathZone" parent="." index="5"]
-position = Vector2(640, 117)
-
-[node name="Nails" parent="." index="6"]
+[node name="Nails" parent="." index="5"]
 visible = true
 
 [node name="Nail" parent="Nails" index="0" instance=ExtResource("3_bruh5")]
@@ -50,3 +47,12 @@ position = Vector2(926, 23)
 
 [node name="Woosh" type="AudioStreamPlayer" parent="Audio" index="0"]
 stream = ExtResource("6_i8rm8")
+
+[node name="RoomTransitionCamera" parent="." index="7"]
+position = Vector2(262, -54)
+
+[node name="Checkpoint" parent="." index="8" instance=ExtResource("6_oqu51")]
+position = Vector2(685, -14)
+
+[node name="Checkpoint2" parent="." index="9" instance=ExtResource("6_oqu51")]
+position = Vector2(190, -62)

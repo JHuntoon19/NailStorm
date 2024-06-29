@@ -11,24 +11,36 @@ var vCamMovement : int = 0
 var originOffset : Vector2 = Vector2.ZERO
 #Signal sent to the level
 signal levelAlert()
+
 func _ready():
+	#gets origin offset from camera
+	originOffset = position
 	#The amount of pixels the camera moves each transition
 	#The amount is the size of the screen minus the offset to keep the player on screen
-	hCamMovement = get_viewport_rect().size.x - hOffset
-	vCamMovement = get_viewport_rect().size.y - vOffset
-	#Keeps track of the camera position from the origin
-	originOffset = position
+	hCamMovement = int(get_viewport_rect().size.x - hOffset)
+	vCamMovement = int(get_viewport_rect().size.y - vOffset)
+	#Stores the default values for the globals to keep track of
+	Globals.cameraPos = position
+	Globals.respawnCameraPos = position
+	Globals.cameraCurrentRoom = currentRoom
+	Globals.respawnCurrentRoom = currentRoom
 func updateCameraPos(direction : Vector2):
+	print("update")
 	currentRoom += direction
 	#Moves the camera the correct amount and alerts the level
 	position = currentRoom * Vector2(hCamMovement, vCamMovement) + originOffset
 	levelAlert.emit()
+	#Lets globals know where the camera is
+	Globals.cameraPos = position
+	Globals.cameraCurrentRoom = currentRoom
 #All are triggered when the player touches the connected area
-func top_entered(body):
+func top_entered(_body):
+	print("Up")
 	updateCameraPos(Vector2.UP)
-func bottom_entered(body):
+func bottom_entered(_body):
+	print("down")
 	updateCameraPos(Vector2.DOWN)
-func left_entered(body):
+func left_entered(_body):
 	updateCameraPos(Vector2.LEFT)
-func right_entered(body):
+func right_entered(_body):
 	updateCameraPos(Vector2.RIGHT)

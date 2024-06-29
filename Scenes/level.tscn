@@ -22,11 +22,6 @@ position = Vector2(109, -109)
 [node name="Dwarf" parent="." instance=ExtResource("2_mkjoh")]
 position = Vector2(-112, -17)
 
-[node name="RoomTransitionCamera" parent="." instance=ExtResource("4_mka0v")]
-position = Vector2(320, -180)
-position_smoothing_enabled = true
-position_smoothing_speed = 15.0
-
 [node name="DeathZone" parent="." instance=ExtResource("5_1ga4t")]
 position = Vector2(-16, 203)
 
@@ -35,5 +30,7 @@ visible = false
 
 [node name="Audio" type="Node" parent="."]
 
-[connection signal="levelAlert" from="RoomTransitionCamera" to="." method="_on_room_transition_camera_level_alert"]
+[node name="RoomTransitionCamera" parent="." instance=ExtResource("4_mka0v")]
+
 [connection signal="respawn" from="DeathZone" to="." method="_on_death_zone_respawn"]
+[connection signal="levelAlert" from="RoomTransitionCamera" to="." method="_on_room_transition_camera_level_alert"]

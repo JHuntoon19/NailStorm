@@ -20,7 +20,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var big_jump_parts = $Parts/BigJump
 #Alerts dwarf if standing on a nail
 var nailed : bool = false
-
+func _ready():
+	Globals.respawnPoint = position
 func _process(delta):
 	#Add gravity
 	if(not is_on_floor()):
@@ -66,7 +67,10 @@ func _process(delta):
 	#Update dwarf position in globals variable
 	Globals.dwarfPos = position
 #Alert dwarf when standing on a nail
-func nail_body_entered(body):
+func nail_body_entered(_body):
 	nailed = true
-func _on_nail_detection_body_exited(body):
+func _on_nail_detection_body_exited(_body):
 	nailed = false
+func death():
+	$Audio/death.play()
+	$Parts/Respawn.emitting = true

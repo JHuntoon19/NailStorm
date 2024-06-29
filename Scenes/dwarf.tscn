@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqrss0cqs2rsk"]
+[gd_scene load_steps=31 format=3 uid="uid://bqrss0cqs2rsk"]
 
 [ext_resource type="Script" path="res://Scripts/Dwarf.gd" id="1_juyjj"]
 [ext_resource type="Texture2D" uid="uid://bubx2srjelyvs" path="res://graphics/Dwarf1-Sheet.png" id="2_gwuc0"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cw3yf62tuvljs" path="res://Audio/BigJump.mp3" id="3_ovt43"]
 [ext_resource type="AudioStream" uid="uid://cbbf41ecp8xuk" path="res://Audio/Jump.wav" id="4_xchda"]
 [ext_resource type="AudioStream" uid="uid://dg7xc02kv6l7m" path="res://Audio/JumpThump.mp3" id="6_yyjtf"]
+[ext_resource type="AudioStream" uid="uid://ukcapg7jym6u" path="res://Audio/Death.wav" id="7_p557j"]
 [ext_resource type="Texture2D" uid="uid://cbvs5mu6xsimu" path="res://graphics/circ.png" id="7_teihp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grge7"]
@@ -182,6 +183,29 @@ scale_max = 0.3
 scale_curve = SubResource("CurveTexture_xmof2")
 color_ramp = SubResource("GradientTexture1D_fa4aq")
 
+[sub_resource type="Gradient" id="Gradient_g22uc"]
+colors = PackedColorArray(0, 0.503838, 6.73831e-07, 1, 0.291432, 0.580781, 0.330739, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tny0h"]
+gradient = SubResource("Gradient_g22uc")
+
+[sub_resource type="Curve" id="Curve_b86uf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uclvc"]
+curve = SubResource("Curve_b86uf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jl3de"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_uclvc")
+color_ramp = SubResource("GradientTexture1D_tny0h")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6ymp"]
 size = Vector2(12, 6)
 
@@ -219,6 +243,10 @@ stream = ExtResource("4_xchda")
 [node name="JumpThump" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("6_yyjtf")
 
+[node name="death" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_p557j")
+volume_db = 7.495
+
 [node name="Parts" type="Node2D" parent="."]
 
 [node name="BigJump" type="GPUParticles2D" parent="Parts"]
@@ -236,6 +264,15 @@ process_material = SubResource("ParticleProcessMaterial_ue6qp")
 texture = ExtResource("7_teihp")
 lifetime = 0.3
 one_shot = true
+
+[node name="Respawn" type="GPUParticles2D" parent="Parts"]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_jl3de")
+texture = ExtResource("7_teihp")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.74
 
 [node name="NailDetection" type="Area2D" parent="."]
 collision_layer = 2
