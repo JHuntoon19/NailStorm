@@ -25,7 +25,6 @@ func _ready():
 	Globals.cameraCurrentRoom = currentRoom
 	Globals.respawnCurrentRoom = currentRoom
 func updateCameraPos(direction : Vector2):
-	print("update")
 	currentRoom += direction
 	#Moves the camera the correct amount and alerts the level
 	position = currentRoom * Vector2(hCamMovement, vCamMovement) + originOffset
@@ -35,10 +34,8 @@ func updateCameraPos(direction : Vector2):
 	Globals.cameraCurrentRoom = currentRoom
 #All are triggered when the player touches the connected area
 func top_entered(_body):
-	print("Up")
 	updateCameraPos(Vector2.UP)
 func bottom_entered(_body):
-	print("down")
 	updateCameraPos(Vector2.DOWN)
 func left_entered(_body):
 	updateCameraPos(Vector2.LEFT)

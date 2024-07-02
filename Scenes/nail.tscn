@@ -297,7 +297,7 @@ radius = 44.7214
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4o8e"]
 size = Vector2(16, 16)
 
-[node name="Nail" type="CharacterBody2D"]
+[node name="Nail" type="CharacterBody2D" groups=["Nail"]]
 collision_layer = 8
 script = ExtResource("1_pmys5")
 

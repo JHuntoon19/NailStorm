@@ -207,7 +207,7 @@ scale_curve = SubResource("CurveTexture_uclvc")
 color_ramp = SubResource("GradientTexture1D_tny0h")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6ymp"]
-size = Vector2(12, 6)
+size = Vector2(12, 11)
 
 [node name="Dwarf" type="CharacterBody2D"]
 top_level = true
@@ -279,8 +279,16 @@ collision_layer = 2
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NailDetection"]
-position = Vector2(0, 9)
+position = Vector2(0, 11.5)
 shape = SubResource("RectangleShape2D_m6ymp")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="body_entered" from="NailDetection" to="." method="nail_body_entered"]
 [connection signal="body_exited" from="NailDetection" to="." method="_on_nail_detection_body_exited"]

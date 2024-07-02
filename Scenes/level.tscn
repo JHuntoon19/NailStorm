@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdjcjs3mssi42"]
+[gd_scene load_steps=8 format=3 uid="uid://bdjcjs3mssi42"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_3b0nq"]
 [ext_resource type="PackedScene" uid="uid://bqrss0cqs2rsk" path="res://Scenes/dwarf.tscn" id="2_mkjoh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://t172begrgpfv" path="res://Scenes/room/room_transition_camera.tscn" id="4_mka0v"]
 [ext_resource type="PackedScene" uid="uid://ddhbr3veuxu8p" path="res://Scenes/death_zone.tscn" id="5_1ga4t"]
 [ext_resource type="Texture2D" uid="uid://bvoyitc6lbqpx" path="res://graphics/SkyBackground.png" id="5_dgqu7"]
+[ext_resource type="AudioStream" uid="uid://bifbwtpssdv7c" path="res://Audio/Woosh.mp3" id="6_34xci"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_3b0nq")
@@ -26,11 +27,16 @@ position = Vector2(-112, -17)
 position = Vector2(-16, 203)
 
 [node name="Nails" type="Node2D" parent="."]
-visible = false
 
 [node name="Audio" type="Node" parent="."]
 
+[node name="Woosh" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_34xci")
+
 [node name="RoomTransitionCamera" parent="." instance=ExtResource("4_mka0v")]
 
+[node name="Spikes" type="Node2D" parent="."]
+
+[connection signal="respawnDwarf" from="Dwarf" to="." method="_on_dwarf_respawn_dwarf"]
 [connection signal="respawn" from="DeathZone" to="." method="_on_death_zone_respawn"]
 [connection signal="levelAlert" from="RoomTransitionCamera" to="." method="_on_room_transition_camera_level_alert"]

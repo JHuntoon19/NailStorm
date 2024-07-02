@@ -7,6 +7,8 @@ var direction : float = 0
 var walking : bool = false
 #Normal jump velocity
 var jumpVel : int = -220
+#bool for jumping
+var jumping : bool = false
 #Jump velocity off of a nail
 var springVel : int = -440
 @onready var animation_player = $AnimationPlayer
@@ -20,6 +22,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var big_jump_parts = $Parts/BigJump
 #Alerts dwarf if standing on a nail
 var nailed : bool = false
+#Signal sent to level to respawn the dwarf
+signal respawnDwarf()
+#Timer for coyote jump
+@onready var coyote_timer = $CoyoteTimer
+#Timer for jump buffer
+@onready var jump_buffer = $JumpBuffer
+
+
 func _ready():
 	Globals.respawnPoint = position
 func _process(delta):
@@ -34,10 +44,42 @@ func _process(delta):
 			big_jump.play()
 			jump_thump.play()
 			big_jump_parts.emitting = true
+			jumping = true
 		#Normal jump with normal sound
-		elif(is_on_floor()):
+		elif(is_on_floor() or not coyote_timer.is_stopped()):
 			velocity.y = jumpVel
 			jump.play()
+			jumping = true
+			#Stop coyote timer 
+			coyote_timer.stop()
+			#stop jump buffer timer
+			jump_buffer.stop()
+		else:
+			jump_buffer.start()
+	#Check for jump buffer
+	if(nailed and not jump_buffer.is_stopped()):
+			velocity.y = springVel
+			big_jump.play()
+			jump_thump.play()
+			big_jump_parts.emitting = true
+			jumping = true
+			#Stop coyote timer 
+			coyote_timer.stop()
+			#stop jump buffer timer
+			jump_buffer.stop()
+			print("Jump buffer nailed")
+	elif(is_on_floor() and not jump_buffer.is_stopped()):
+			velocity.y = jumpVel
+			jump.play()
+			jumping = true
+			#Stop coyote timer 
+			coyote_timer.stop()
+			#stop jump buffer timer
+			jump_buffer.stop()
+			print("jump buffer norm")
+	#Check if not jumping anymore
+	if(velocity.y >= 0):
+		jumping = false
 	#Get direction for movement
 	direction = Input.get_axis("Left", "Right")
 	#Changes the velocity depending on the direction
@@ -63,9 +105,17 @@ func _process(delta):
 		sprite.flip_h = false
 	elif (direction < 0):
 		sprite.flip_h = true
+	#Used for coyote time
+	var wasOnFloor = is_on_floor()
 	move_and_slide()
+	#Checks that player is falling off a block
+	if( not is_on_floor() and wasOnFloor and not jumping):
+		coyote_timer.start()
 	#Update dwarf position in globals variable
 	Globals.dwarfPos = position
+	#Allow player to respawn
+	if(Input.is_action_just_pressed("Respawn")):
+		respawn()
 #Alert dwarf when standing on a nail
 func nail_body_entered(_body):
 	nailed = true
@@ -74,3 +124,5 @@ func _on_nail_detection_body_exited(_body):
 func death():
 	$Audio/death.play()
 	$Parts/Respawn.emitting = true
+func respawn():
+	respawnDwarf.emit()

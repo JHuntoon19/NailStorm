@@ -5,17 +5,20 @@ var dead : bool = false
 var jumping : bool = false
 var hitting : bool = false
 #Direction to move
-var direction : Vector2 = Vector2(0,0)
+var direction : Vector2 = Vector2.ZERO
 #Speed of movement 
 var speed : int = 75
 #Gravity will match the project gravity
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #Height of jump
 var jumpHeight : int = -180
-
-func ready():
+#Store the location for respawns
+var startPos := Vector2.ZERO
+func _ready():
 	#Resets its state and hitboxes
 	$AnimationPlayer.play("Idle")
+	startPos = position
+	print("startPos")
 func _process(delta):
 	#Add gravity
 	if(not is_on_floor()):
@@ -64,3 +67,9 @@ func _on_dwarf_hit_area_body_exited(_body):
 #Tells the nail to jump again
 func _on_jump_timer_timeout():
 	jumping = false
+#Reset nail for respawn
+func reset():
+	$AnimationPlayer.play("Idle")
+	position = startPos
+	near = false
+	dead = false
