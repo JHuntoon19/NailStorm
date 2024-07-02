@@ -126,3 +126,5 @@ func death():
 	$Parts/Respawn.emitting = true
 func respawn():
 	respawnDwarf.emit()
+func disLight():
+	$PointLight2D.enabled = false

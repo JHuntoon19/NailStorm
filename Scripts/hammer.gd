@@ -15,3 +15,5 @@ func endCol():
 #Only collides with a nail so when it enters the nail it hits it
 func _on_body_entered(body):
 	body.hit()
+func disLight():
+	$PointLight2D.enabled = false

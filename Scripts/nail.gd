@@ -73,3 +73,5 @@ func reset():
 	position = startPos
 	near = false
 	dead = false
+func disLight():
+	$Light.visible = false

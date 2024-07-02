@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhhkyv3ecyu5e"]
+[gd_scene load_steps=19 format=3 uid="uid://bhhkyv3ecyu5e"]
 
 [ext_resource type="Script" path="res://Scripts/nail.gd" id="1_pmys5"]
 [ext_resource type="Texture2D" uid="uid://cguht7na0a7wh" path="res://graphics/Nail2.png" id="2_whxoo"]
 [ext_resource type="Texture2D" uid="uid://cbvs5mu6xsimu" path="res://graphics/circ.png" id="3_2uw0x"]
 [ext_resource type="AudioStream" uid="uid://b74hrakqqpxs5" path="res://Audio/Hit.mp3" id="4_omxse"]
+[ext_resource type="Texture2D" uid="uid://c8mb046c4h13y" path="res://graphics/white.png" id="5_6usjf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eapu"]
 size = Vector2(14, 15)
@@ -297,6 +298,9 @@ radius = 44.7214
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4o8e"]
 size = Vector2(16, 16)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btwb1"]
+blend_mode = 1
+
 [node name="Nail" type="CharacterBody2D" groups=["Nail"]]
 collision_layer = 8
 script = ExtResource("1_pmys5")
@@ -349,6 +353,12 @@ shape = SubResource("RectangleShape2D_k4o8e")
 
 [node name="JumpTimer" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="Light" type="Sprite2D" parent="."]
+modulate = Color(0.458824, 0.458824, 0.458824, 0.870588)
+material = SubResource("CanvasItemMaterial_btwb1")
+scale = Vector2(1.44, 1.44)
+texture = ExtResource("5_6usjf")
 
 [connection signal="body_entered" from="Chase Area" to="." method="_on_chase_area_body_entered"]
 [connection signal="body_exited" from="Chase Area" to="." method="_on_chase_area_body_exited"]

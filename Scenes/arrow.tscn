@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc5kkia5qtld4"]
+[gd_scene load_steps=6 format=3 uid="uid://cc5kkia5qtld4"]
 
 [ext_resource type="Texture2D" uid="uid://be3um5soi1jss" path="res://graphics/Arrow.png" id="1_1mn7k"]
+[ext_resource type="Texture2D" uid="uid://c8mb046c4h13y" path="res://graphics/white.png" id="2_uq0cx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_48xob"]
 atlas = ExtResource("1_1mn7k")
@@ -29,3 +30,9 @@ sprite_frames = SubResource("SpriteFrames_7k6lv")
 animation = &"Flash"
 autoplay = "Flash"
 frame_progress = 0.684967
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.461825, 0.0895759, 0.120074, 1)
+energy = 0.35
+texture = ExtResource("2_uq0cx")
+texture_scale = 3.0

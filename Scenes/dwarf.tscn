@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bqrss0cqs2rsk"]
+[gd_scene load_steps=32 format=3 uid="uid://bqrss0cqs2rsk"]
 
 [ext_resource type="Script" path="res://Scripts/Dwarf.gd" id="1_juyjj"]
 [ext_resource type="Texture2D" uid="uid://bubx2srjelyvs" path="res://graphics/Dwarf1-Sheet.png" id="2_gwuc0"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dg7xc02kv6l7m" path="res://Audio/JumpThump.mp3" id="6_yyjtf"]
 [ext_resource type="AudioStream" uid="uid://ukcapg7jym6u" path="res://Audio/Death.wav" id="7_p557j"]
 [ext_resource type="Texture2D" uid="uid://cbvs5mu6xsimu" path="res://graphics/circ.png" id="7_teihp"]
+[ext_resource type="Texture2D" uid="uid://c8mb046c4h13y" path="res://graphics/white.png" id="9_ej0vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grge7"]
 size = Vector2(14, 21)
@@ -289,6 +290,11 @@ one_shot = true
 [node name="JumpBuffer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.35
+texture = ExtResource("9_ej0vm")
+texture_scale = 3.0
 
 [connection signal="body_entered" from="NailDetection" to="." method="nail_body_entered"]
 [connection signal="body_exited" from="NailDetection" to="." method="_on_nail_detection_body_exited"]

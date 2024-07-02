@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwa2ak3j582tm"]
+[gd_scene load_steps=20 format=3 uid="uid://bwa2ak3j582tm"]
 
 [ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="1_geshj"]
 [ext_resource type="Texture2D" uid="uid://ds360aqfsb6ic" path="res://graphics/Crystal-Sheet.png" id="1_rny83"]
 [ext_resource type="Texture2D" uid="uid://cbvs5mu6xsimu" path="res://graphics/circ.png" id="2_6ague"]
 [ext_resource type="AudioStream" uid="uid://ccqp3jw1egm74" path="res://Audio/Charging.wav" id="3_q8vwe"]
 [ext_resource type="AudioStream" uid="uid://dyikdpicb4cyd" path="res://Audio/Hammer Drum 4.wav" id="4_jgir1"]
+[ext_resource type="Texture2D" uid="uid://c8mb046c4h13y" path="res://graphics/white.png" id="6_3fu26"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07ggb"]
 size = Vector2(15, 16)
@@ -72,6 +73,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointLight2D:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.35, 0.1, 0.9, 1.0, 0.35]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PointLight2D:texture_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [2.5, 3.5, 0.75, 5.0, 2.5]
+}
 
 [sub_resource type="Animation" id="Animation_h0eql"]
 resource_name = "Idle"
@@ -88,6 +113,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.35, 0.1, 0.35]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.5, 1.5, 2.5]
 }
 
 [sub_resource type="Animation" id="Animation_w3b31"]
@@ -152,6 +201,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointLight2D:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.35]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PointLight2D:texture_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.5]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k6ult"]
 _data = {
@@ -201,7 +274,7 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_aw6i6")
 color_ramp = SubResource("GradientTexture1D_whycw")
 
-[node name="Checkpoint" type="Area2D"]
+[node name="Checkpoint" type="Area2D" groups=["Checkpoint"]]
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("1_geshj")
@@ -244,4 +317,14 @@ stream = ExtResource("3_q8vwe")
 [node name="Done" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_jgir1")
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.364706, 0.192157, 1, 1)
+energy = 0.35
+texture = ExtResource("6_3fu26")
+texture_scale = 2.5
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -24,7 +24,7 @@ TrinityFieldsBegining="*res://Audio/Music/TrinityFieldsBegining.tscn"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=2
+window/size/mode=3
 window/size/resizable=false
 window/size/window_width_override=640
 window/size/window_height_override=360
@@ -83,5 +83,8 @@ Respawn={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+global_illumination/sdfgi/probe_ray_count=2
+limits/opengl/max_renderable_lights=52
+limits/opengl/max_lights_per_object=32
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
