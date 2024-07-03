@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpydoxxve4sia"
-path="res://.godot/imported/Dwarf1-Sheet.png-9eba1ea9731ccf3e0bc0b4cd9cb73598.ctex"
+uid="uid://bvrivmhunnclu"
+path="res://.godot/imported/Nail.png-2815f6f9042c20494be7dd7c7ef560d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Dwarf1-Sheet.png"
-dest_files=["res://.godot/imported/Dwarf1-Sheet.png-9eba1ea9731ccf3e0bc0b4cd9cb73598.ctex"]
+source_file="res://graphics/old/Nail.png"
+dest_files=["res://.godot/imported/Nail.png-2815f6f9042c20494be7dd7c7ef560d5.ctex"]
 
 [params]
 

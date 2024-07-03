@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0d52hxku5o3"
-path="res://.godot/imported/Nail-Sheet.png-2e2aa028f621f2b59581d3a5a5f9ef09.ctex"
+uid="uid://vb1ohy3bjtq0"
+path="res://.godot/imported/justHam.png-5d70c71f3765cf5eda20b98dd20bb2ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Nail-Sheet.png"
-dest_files=["res://.godot/imported/Nail-Sheet.png-2e2aa028f621f2b59581d3a5a5f9ef09.ctex"]
+source_file="res://graphics/UI/justHam.png"
+dest_files=["res://.godot/imported/justHam.png-5d70c71f3765cf5eda20b98dd20bb2ef.ctex"]
 
 [params]
 

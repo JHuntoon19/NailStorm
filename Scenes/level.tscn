@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://bdjcjs3mssi42"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_3b0nq"]
+[ext_resource type="Texture2D" uid="uid://bvoyitc6lbqpx" path="res://graphics/world/SkyBackground.png" id="2_ixdsr"]
 [ext_resource type="PackedScene" uid="uid://bqrss0cqs2rsk" path="res://Scenes/dwarf.tscn" id="2_mkjoh"]
 [ext_resource type="PackedScene" uid="uid://6j3p755eg4he" path="res://Scenes/hammer.tscn" id="3_diynh"]
 [ext_resource type="PackedScene" uid="uid://t172begrgpfv" path="res://Scenes/room/room_transition_camera.tscn" id="4_mka0v"]
 [ext_resource type="PackedScene" uid="uid://ddhbr3veuxu8p" path="res://Scenes/death_zone.tscn" id="5_1ga4t"]
-[ext_resource type="Texture2D" uid="uid://bvoyitc6lbqpx" path="res://graphics/SkyBackground.png" id="5_dgqu7"]
 [ext_resource type="AudioStream" uid="uid://bifbwtpssdv7c" path="res://Audio/Woosh.mp3" id="6_34xci"]
 
 [node name="Level" type="Node2D"]
@@ -14,7 +14,7 @@ script = ExtResource("1_3b0nq")
 [node name="Backgrounds" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="Backgrounds"]
-texture = ExtResource("5_dgqu7")
+texture = ExtResource("2_ixdsr")
 
 [node name="Hammer" parent="." instance=ExtResource("3_diynh")]
 z_index = 3

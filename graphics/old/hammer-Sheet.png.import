@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://563yv3i5fcj5"
-path="res://.godot/imported/Torch-Sheet.png-5881e1755b2c6778ec7dea8bcf36ff63.ctex"
+uid="uid://b8wt1pybldwdb"
+path="res://.godot/imported/hammer-Sheet.png-29e141fa3d61c7b495262788865a5d28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Torch-Sheet.png"
-dest_files=["res://.godot/imported/Torch-Sheet.png-5881e1755b2c6778ec7dea8bcf36ff63.ctex"]
+source_file="res://graphics/old/hammer-Sheet.png"
+dest_files=["res://.godot/imported/hammer-Sheet.png-29e141fa3d61c7b495262788865a5d28.ctex"]
 
 [params]
 

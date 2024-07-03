@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be3um5soi1jss"
-path="res://.godot/imported/Arrow.png-2b00012450ab41e6296cd51a95d16e45.ctex"
+uid="uid://bhs3sburihdby"
+path="res://.godot/imported/Underbackground2.png-00ab52374ae4350c940021059c451e72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Arrow.png"
-dest_files=["res://.godot/imported/Arrow.png-2b00012450ab41e6296cd51a95d16e45.ctex"]
+source_file="res://graphics/world/Underbackground2.png"
+dest_files=["res://.godot/imported/Underbackground2.png-00ab52374ae4350c940021059c451e72.ctex"]
 
 [params]
 

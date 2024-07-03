@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpydoxxve4sia"
-path="res://.godot/imported/Dwarf1-Sheet.png-9eba1ea9731ccf3e0bc0b4cd9cb73598.ctex"
+uid="uid://xofsp1wm2gks"
+path="res://.godot/imported/Title.png-2aa474518727d17b4cf07bfb2d579b37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Dwarf1-Sheet.png"
-dest_files=["res://.godot/imported/Dwarf1-Sheet.png-9eba1ea9731ccf3e0bc0b4cd9cb73598.ctex"]
+source_file="res://graphics/UI/Title.png"
+dest_files=["res://.godot/imported/Title.png-2aa474518727d17b4cf07bfb2d579b37.ctex"]
 
 [params]
 

@@ -1,24 +1,24 @@
 [gd_scene load_steps=6 format=3 uid="uid://cc5kkia5qtld4"]
 
-[ext_resource type="Texture2D" uid="uid://be3um5soi1jss" path="res://graphics/Arrow.png" id="1_1mn7k"]
+[ext_resource type="Texture2D" uid="uid://be3um5soi1jss" path="res://graphics/world/Arrow.png" id="1_nbrwb"]
 [ext_resource type="Texture2D" uid="uid://c8mb046c4h13y" path="res://graphics/white.png" id="2_uq0cx"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_48xob"]
-atlas = ExtResource("1_1mn7k")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k3ttr"]
-atlas = ExtResource("1_1mn7k")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpw85"]
+atlas = ExtResource("1_nbrwb")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jis5"]
+atlas = ExtResource("1_nbrwb")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7k6lv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_48xob")
+"texture": SubResource("AtlasTexture_mpw85")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k3ttr")
+"texture": SubResource("AtlasTexture_3jis5")
 }],
 "loop": true,
 "name": &"Flash",
@@ -29,7 +29,7 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_7k6lv")
 animation = &"Flash"
 autoplay = "Flash"
-frame_progress = 0.684967
+frame_progress = 0.158235
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.461825, 0.0895759, 0.120074, 1)

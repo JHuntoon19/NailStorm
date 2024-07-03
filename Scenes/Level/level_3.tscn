@@ -1,32 +1,36 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdyu1ge6o2lr1"]
+[gd_scene load_steps=13 format=3 uid="uid://bdyu1ge6o2lr1"]
 
 [ext_resource type="PackedScene" uid="uid://bdjcjs3mssi42" path="res://Scenes/level.tscn" id="1_c62ay"]
-[ext_resource type="Texture2D" uid="uid://bhs3sburihdby" path="res://graphics/Underbackground2.png" id="2_grj0t"]
+[ext_resource type="Script" path="res://Scenes/Level/level_3.gd" id="2_ovcgt"]
 [ext_resource type="PackedScene" uid="uid://dlr0yud5wkumb" path="res://Scenes/Level/level_3_tiles.tscn" id="3_pruwq"]
+[ext_resource type="Texture2D" uid="uid://bhs3sburihdby" path="res://graphics/world/Underbackground2.png" id="3_s7ujj"]
 [ext_resource type="PackedScene" uid="uid://bwa2ak3j582tm" path="res://Scenes/checkpoint.tscn" id="4_22sin"]
 [ext_resource type="PackedScene" uid="uid://cc5kkia5qtld4" path="res://Scenes/arrow.tscn" id="5_igmwl"]
 [ext_resource type="PackedScene" uid="uid://bhhkyv3ecyu5e" path="res://Scenes/nail.tscn" id="6_vfq68"]
 [ext_resource type="PackedScene" uid="uid://c4oh7pn8jn1q" path="res://Scenes/spike.tscn" id="7_2ti18"]
 [ext_resource type="PackedScene" uid="uid://dvw131naxcquw" path="res://Scenes/torch.tscn" id="8_qg1f6"]
 [ext_resource type="PackedScene" uid="uid://b0sghqap8l7tu" path="res://Scenes/HammerSpawn.tscn" id="9_qgnde"]
+[ext_resource type="Theme" uid="uid://d0ejecbmplhug" path="res://Scenes/Level/THeme.tres" id="11_qxqtx"]
+[ext_resource type="PackedScene" uid="uid://dxf1jlc2bo1b1" path="res://Scenes/Level/level_load.tscn" id="12_a0esy"]
 
 [node name="Level3" instance=ExtResource("1_c62ay")]
+script = ExtResource("2_ovcgt")
 
 [node name="Background" parent="Backgrounds" index="0"]
 position = Vector2(80, -52)
-texture = ExtResource("2_grj0t")
+texture = ExtResource("3_s7ujj")
 
 [node name="Background" type="Sprite2D" parent="Backgrounds/Background" index="0"]
 position = Vector2(640, 0)
-texture = ExtResource("2_grj0t")
+texture = ExtResource("3_s7ujj")
 
 [node name="Background" type="Sprite2D" parent="Backgrounds/Background/Background" index="0"]
 position = Vector2(-640, 360)
-texture = ExtResource("2_grj0t")
+texture = ExtResource("3_s7ujj")
 
 [node name="Background" type="Sprite2D" parent="Backgrounds/Background/Background/Background" index="0"]
 position = Vector2(640, 0)
-texture = ExtResource("2_grj0t")
+texture = ExtResource("3_s7ujj")
 
 [node name="Level3Tiles" parent="." index="1" instance=ExtResource("3_pruwq")]
 layer_0/name = "Back"
@@ -36,11 +40,14 @@ layer_1/tile_data = PackedInt32Array(65535, 196608, 3, 0, 196608, 3, 1, 196608, 
 layer_2/name = "Decs"
 layer_2/tile_data = PackedInt32Array()
 
+[node name="Hammer" parent="." index="2"]
+visible = false
+
 [node name="Dwarf" parent="." index="3"]
 position = Vector2(-162, -214)
 
 [node name="DeathZone" parent="." index="4"]
-position = Vector2(-68, 512)
+position = Vector2(436, 458)
 
 [node name="Nail" parent="Nails" index="0" instance=ExtResource("6_vfq68")]
 position = Vector2(214, 423)
@@ -148,8 +155,40 @@ frame_progress = 0.448243
 position = Vector2(-37, -28)
 
 [node name="Dimmer" type="DirectionalLight2D" parent="." index="12"]
+position = Vector2(-486, -26)
 color = Color(0.560955, 0.560955, 0.560955, 1)
 blend_mode = 1
 
-[node name="Area2D" parent="." index="13" instance=ExtResource("9_qgnde")]
+[node name="HammerSpawn" parent="." index="13" instance=ExtResource("9_qgnde")]
 position = Vector2(844, 352)
+
+[node name="Checkpoint2" parent="." index="14" instance=ExtResource("4_22sin")]
+position = Vector2(787, 170)
+
+[node name="TutorialText" type="Node2D" parent="." index="15"]
+
+[node name="Label" type="Label" parent="TutorialText" index="0"]
+offset_left = -226.0
+offset_top = 132.0
+offset_right = 463.0
+offset_bottom = 253.0
+theme = ExtResource("11_qxqtx")
+theme_override_colors/font_color = Color(0, 0, 0.176471, 1)
+theme_override_font_sizes/font_size = 24
+text = "Use the hammer
+ to smash the nails
+ and jump over the ledge
+Press r to reset"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelLoad" parent="." index="16" instance=ExtResource("12_a0esy")]
+position = Vector2(-80, 364)
+
+[node name="Checkpoint3" parent="." index="17" instance=ExtResource("4_22sin")]
+position = Vector2(48, 287)
+
+[connection signal="activation" from="Checkpoint" to="." method="_on_checkpoint_activation"]
+[connection signal="hammerTime" from="HammerSpawn" to="." method="_on_area_2d_hammer_time"]
+[connection signal="activation" from="Checkpoint2" to="." method="_on_checkpoint_2_activation"]
+[connection signal="body_entered" from="LevelLoad" to="." method="_on_level_load_body_entered"]

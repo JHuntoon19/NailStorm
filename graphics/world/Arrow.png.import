@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvrivmhunnclu"
-path="res://.godot/imported/Nail.png-5ff8ed5ec5f0fd0452a5b797226d0b27.ctex"
+uid="uid://be3um5soi1jss"
+path="res://.godot/imported/Arrow.png-a8f56f9b9fc0ddc18001a54f1dd4c3bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Nail.png"
-dest_files=["res://.godot/imported/Nail.png-5ff8ed5ec5f0fd0452a5b797226d0b27.ctex"]
+source_file="res://graphics/world/Arrow.png"
+dest_files=["res://.godot/imported/Arrow.png-a8f56f9b9fc0ddc18001a54f1dd4c3bd.ctex"]
 
 [params]
 

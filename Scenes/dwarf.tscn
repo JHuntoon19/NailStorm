@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://bqrss0cqs2rsk"]
 
 [ext_resource type="Script" path="res://Scripts/Dwarf.gd" id="1_juyjj"]
-[ext_resource type="Texture2D" uid="uid://bubx2srjelyvs" path="res://graphics/Dwarf1-Sheet.png" id="2_gwuc0"]
+[ext_resource type="Texture2D" uid="uid://bpydoxxve4sia" path="res://graphics/Dwarf1-Sheet.png" id="2_gwuc0"]
 [ext_resource type="AudioStream" uid="uid://c0m62qy5wynqj" path="res://Audio/Step.wav" id="3_ifptg"]
 [ext_resource type="AudioStream" uid="uid://cw3yf62tuvljs" path="res://Audio/BigJump.mp3" id="3_ovt43"]
 [ext_resource type="AudioStream" uid="uid://cbbf41ecp8xuk" path="res://Audio/Jump.wav" id="4_xchda"]

@@ -11,10 +11,11 @@ func _process(_delta):
 func respawn():
 	$Dwarf.death()
 	$Dwarf.position = Globals.respawnPoint
-	$RoomTransitionCamera.position = Globals.respawnCameraPos
-	$RoomTransitionCamera.currentRoom = Globals.respawnCurrentRoom
 	for nail in get_tree().get_nodes_in_group("Nail"):
 		nail.reset()
+	$RoomTransitionCamera.position = Globals.respawnCameraPos
+	$RoomTransitionCamera.currentRoom = Globals.respawnCurrentRoom
+	
 	get_tree().paused = false
 #Signal recieved from the death zone
 func _on_death_zone_respawn():
@@ -25,10 +26,6 @@ func playWoosh():
 #Camera sends this signal to alert the level that the room changed
 func _on_room_transition_camera_level_alert():
 	playWoosh()
-#changes scene to next level
-func _on_level_load_body_entered(_body):
-	get_tree().call_deferred("change_scene_to_file","res://Scenes/Level/level_3.tscn")
-
 
 func _on_dwarf_respawn_dwarf():
 	respawn()

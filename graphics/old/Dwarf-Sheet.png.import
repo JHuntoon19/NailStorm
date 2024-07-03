@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhs3sburihdby"
-path="res://.godot/imported/Underbackground2.png-b2f5e51082f6bf02662cabb9df2ebe4b.ctex"
+uid="uid://dv7tw22ge8pbx"
+path="res://.godot/imported/Dwarf-Sheet.png-aec9df64eb4e1dd2ed84c9da4268b1fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Underbackground2.png"
-dest_files=["res://.godot/imported/Underbackground2.png-b2f5e51082f6bf02662cabb9df2ebe4b.ctex"]
+source_file="res://graphics/old/Dwarf-Sheet.png"
+dest_files=["res://.godot/imported/Dwarf-Sheet.png-aec9df64eb4e1dd2ed84c9da4268b1fa.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oevefp16ja0e"
-path="res://.godot/imported/Tileset2.png-b25f188269b8b4d86b815fa4a8063256.ctex"
+uid="uid://bubx2srjelyvs"
+path="res://.godot/imported/Dwarf1-Sheet.png-9eba1ea9731ccf3e0bc0b4cd9cb73598.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Tileset2.png"
-dest_files=["res://.godot/imported/Tileset2.png-b25f188269b8b4d86b815fa4a8063256.ctex"]
+source_file="res://graphics/Dwarf1-Sheet.png"
+dest_files=["res://.godot/imported/Dwarf1-Sheet.png-9eba1ea9731ccf3e0bc0b4cd9cb73598.ctex"]
 
 [params]
 

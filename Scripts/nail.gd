@@ -73,5 +73,6 @@ func reset():
 	position = startPos
 	near = false
 	dead = false
+	velocity = Vector2.ZERO
 func disLight():
 	$Light.visible = false

@@ -3,13 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bdjcjs3mssi42" path="res://Scenes/level.tscn" id="1_2w8ca"]
 [ext_resource type="Script" path="res://Scenes/Level/level2.gd" id="2_4tkvy"]
 [ext_resource type="PackedScene" uid="uid://bgprp1ktxrmcc" path="res://Scenes/Level/level_2_tiles.tscn" id="2_4yvmo"]
-[ext_resource type="PackedScene" uid="uid://bhhkyv3ecyu5e" path="res://Scenes/nail.tscn" id="3_bruh5"]
-[ext_resource type="Texture2D" uid="uid://bvoyitc6lbqpx" path="res://graphics/SkyBackground.png" id="3_gfuue"]
+[ext_resource type="Texture2D" uid="uid://bvoyitc6lbqpx" path="res://graphics/world/SkyBackground.png" id="3_m70ui"]
+[ext_resource type="PackedScene" uid="uid://dxf1jlc2bo1b1" path="res://Scenes/Level/level_load.tscn" id="6_b35cy"]
 [ext_resource type="PackedScene" uid="uid://bwa2ak3j582tm" path="res://Scenes/checkpoint.tscn" id="6_oqu51"]
 [ext_resource type="PackedScene" uid="uid://cc5kkia5qtld4" path="res://Scenes/arrow.tscn" id="6_pt6hc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_teod5"]
-size = Vector2(66, 20)
+[ext_resource type="Theme" uid="uid://d0ejecbmplhug" path="res://Scenes/Level/THeme.tres" id="7_kbehr"]
 
 [node name="Level" instance=ExtResource("1_2w8ca")]
 script = ExtResource("2_4tkvy")
@@ -19,7 +17,7 @@ position = Vector2(263, -55)
 
 [node name="Background2" type="Sprite2D" parent="Backgrounds" index="1"]
 position = Vector2(903, -54)
-texture = ExtResource("3_gfuue")
+texture = ExtResource("3_m70ui")
 
 [node name="Level2Tiles" parent="." index="1" instance=ExtResource("2_4yvmo")]
 position = Vector2(70, 14)
@@ -30,26 +28,14 @@ layer_1/tile_data = PackedInt32Array(65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 6553
 layer_2/name = "Decs"
 layer_2/tile_data = PackedInt32Array(-4, 131072, 2, -196607, 65536, 2, -327673, 65536, 2, -393205, 65536, 2, 65554, 131072, 3, 262157, 65536, 2, 262163, 65536, 3, 196633, 65536, 2, 32, 65536, 2, -65499, 0, 4, -131031, 131072, 3, 47, 0, 5, 53, 65536, 2, 131128, 65536, 2, -2, 0, 2, -262142, 0, 2, -327672, 65536, 3, 262159, 0, 2, 262165, 0, 2, 36, 0, 2, -65490, 0, 2, -3, 65536, 3, -262140, 0, 3, 65563, 0, 3, 65587, 0, 3, -65540, 131072, 1, -131076, 131072, 0, 262158, 131072, 2, 196622, 131072, 0, 131098, 131072, 2, 65562, 131072, 1, 26, 131072, 1, -65510, 131072, 0, 65552, 131072, 3, 65553, 131072, 3, 65555, 131072, 3, 65556, 131072, 3, -131032, 131072, 3, -131030, 131072, 3, -1, 0, 4, 262161, 0, 4, 65588, 0, 5, -131072, 65536, 4, -196596, 131072, 3, -196595, 131072, 3, -196594, 131072, 3, -196593, 0, 2, -131054, 0, 3)
 
+[node name="Hammer" parent="." index="2"]
+visible = false
+
 [node name="Dwarf" parent="." index="3"]
 position = Vector2(3, 0)
 
 [node name="DeathZone" parent="." index="4"]
 position = Vector2(159, 97)
-
-[node name="Nail" parent="Nails" index="0" instance=ExtResource("3_bruh5")]
-position = Vector2(94, -25)
-
-[node name="Nail2" parent="Nails" index="1" instance=ExtResource("3_bruh5")]
-position = Vector2(122, -42)
-
-[node name="Nail3" parent="Nails" index="2" instance=ExtResource("3_bruh5")]
-position = Vector2(333, -27)
-
-[node name="Nail4" parent="Nails" index="3" instance=ExtResource("3_bruh5")]
-position = Vector2(815, 5)
-
-[node name="Nail5" parent="Nails" index="4" instance=ExtResource("3_bruh5")]
-position = Vector2(926, 23)
 
 [node name="RoomTransitionCamera" parent="." index="7"]
 position = Vector2(262, -54)
@@ -60,17 +46,37 @@ position = Vector2(685, -14)
 [node name="Checkpoint2" parent="." index="9" instance=ExtResource("6_oqu51")]
 position = Vector2(190, -62)
 
-[node name="LevelLoad" type="Area2D" parent="." index="10"]
-position = Vector2(1045, 98)
-collision_layer = 64
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLoad" index="0"]
-position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_teod5")
+[node name="LevelLoad" parent="." index="10" instance=ExtResource("6_b35cy")]
+position = Vector2(1045, 88)
 
 [node name="Arrow" parent="." index="11" instance=ExtResource("6_pt6hc")]
 position = Vector2(1037, 54)
+
+[node name="TutorialTexts" type="Node2D" parent="." index="13"]
+
+[node name="Move" type="Label" parent="TutorialTexts" index="0"]
+offset_left = -32.0
+offset_top = -89.0
+offset_right = 171.0
+offset_bottom = -38.0
+theme = ExtResource("7_kbehr")
+theme_override_colors/font_color = Color(0.635183, 0.0999637, 0.42092, 1)
+theme_override_font_sizes/font_size = 14
+text = "WASD to move
+Space to jump"
+horizontal_alignment = 1
+
+[node name="Checkpoint" type="Label" parent="TutorialTexts" index="1"]
+offset_left = 79.0
+offset_top = -137.0
+offset_right = 369.0
+offset_bottom = -96.0
+theme = ExtResource("7_kbehr")
+theme_override_colors/font_color = Color(0.635294, 0.0980392, 0.419608, 1)
+theme_override_font_sizes/font_size = 16
+text = "Use the checkpoint to
+ set your spawn"
+horizontal_alignment = 1
 
 [connection signal="activation" from="Checkpoint" to="." method="_on_checkpoint_activation"]
 [connection signal="activation" from="Checkpoint2" to="." method="_on_checkpoint_2_activation"]
