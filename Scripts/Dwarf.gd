@@ -67,7 +67,7 @@ func _process(delta):
 		#If in the air this plays jump animation
 		animation_player.play("Jump")
 		#smooth jumping arc
-		velocity.x = move_toward(prevVel.x, velocity.x, 0.3)
+		#velocity.x = move_toward(prevVel.x, velocity.x, 0.3)
 	#Flips character depending on movement
 	if(direction > 0):
 		sprite.flip_h = false
@@ -113,10 +113,14 @@ func nail_body_entered(_body):
 func _on_nail_detection_body_exited(_body):
 	nailed = false
 func death():
+	visible = true
 	$Audio/death.play()
 	$Parts/Respawn.emitting = true
 func respawn():
-	get_tree().paused = true
 	respawnDwarf.emit()
 func disLight():
 	$PointLight2D.enabled = false
+func unCollide():
+	$CollisionShape2D.disabled = true
+func reCollide():
+	$CollisionShape2D.disabled = false

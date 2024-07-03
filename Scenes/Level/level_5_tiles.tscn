@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjkkihvbsjpav"]
+
+[ext_resource type="TileSet" uid="uid://c78xenj0yefsm" path="res://Scenes/Level/Tileset.tres" id="1_6el0p"]
+
+[node name="Level5Tiles" type="TileMap"]
+tile_set = ExtResource("1_6el0p")
+format = 2
+layer_0/name = "Back"
+layer_1/name = "Ground"
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Decs"
+layer_2/tile_data = PackedInt32Array()

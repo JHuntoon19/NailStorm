@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdjcjs3mssi42"]
+[gd_scene load_steps=9 format=3 uid="uid://bdjcjs3mssi42"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_3b0nq"]
 [ext_resource type="Texture2D" uid="uid://bvoyitc6lbqpx" path="res://graphics/world/SkyBackground.png" id="2_ixdsr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://t172begrgpfv" path="res://Scenes/room/room_transition_camera.tscn" id="4_mka0v"]
 [ext_resource type="PackedScene" uid="uid://ddhbr3veuxu8p" path="res://Scenes/death_zone.tscn" id="5_1ga4t"]
 [ext_resource type="AudioStream" uid="uid://bifbwtpssdv7c" path="res://Audio/Woosh.mp3" id="6_34xci"]
+[ext_resource type="PackedScene" uid="uid://bte412s7lqmyw" path="res://Scenes/UI/pause.tscn" id="8_2fs4m"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_3b0nq")
@@ -37,6 +38,15 @@ stream = ExtResource("6_34xci")
 
 [node name="Spikes" type="Node2D" parent="."]
 
+[node name="CamDelay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Pause" parent="." instance=ExtResource("8_2fs4m")]
+visible = false
+
 [connection signal="respawnDwarf" from="Dwarf" to="." method="_on_dwarf_respawn_dwarf"]
 [connection signal="respawn" from="DeathZone" to="." method="_on_death_zone_respawn"]
 [connection signal="levelAlert" from="RoomTransitionCamera" to="." method="_on_room_transition_camera_level_alert"]
+[connection signal="timeout" from="CamDelay" to="." method="_on_cam_delay_timeout"]
+[connection signal="playing" from="Pause" to="." method="_on_pause_playing"]

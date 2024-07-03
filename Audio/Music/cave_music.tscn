@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci7j81lnrbtst"]
+
+[ext_resource type="AudioStream" uid="uid://cv52hk3uq5x5v" path="res://Audio/Music/Caves.wav" id="1_hobgc"]
+
+[node name="CaveMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_hobgc")
+bus = &"Music"

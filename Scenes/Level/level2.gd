@@ -25,3 +25,9 @@ func _on_level_load_body_entered(_body):
 	$Dwarf.visible = false
 	#changes scene to next level
 	SceneTransition.changeScene("res://Scenes/Level/level_3.tscn")
+
+
+func _on_cam_delay_timeout():
+	print("Respawn")
+	$RoomTransitionCamera.position = Globals.respawnCameraPos
+	$RoomTransitionCamera.currentRoom = Globals.respawnCurrentRoom

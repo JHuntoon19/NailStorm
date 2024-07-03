@@ -19,6 +19,6 @@ func _on_checkpoint_2_activation():
 	$Checkpoint.unActivated()
 
 
-func _on_level_load_body_entered(body):
+func _on_level_load_body_entered(_body):
 	$Dwarf.visible = false
 	SceneTransition.changeScene("res://Scenes/Level/level_4.tscn")

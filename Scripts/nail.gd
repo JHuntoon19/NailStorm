@@ -18,7 +18,6 @@ func _ready():
 	#Resets its state and hitboxes
 	$AnimationPlayer.play("Idle")
 	startPos = position
-	print("startPos")
 func _process(delta):
 	#Add gravity
 	if(not is_on_floor()):

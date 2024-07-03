@@ -34,10 +34,14 @@ func updateCameraPos(direction : Vector2):
 	Globals.cameraCurrentRoom = currentRoom
 #All are triggered when the player touches the connected area
 func top_entered(_body):
+	print("UP")
 	updateCameraPos(Vector2.UP)
 func bottom_entered(_body):
+	print("Down")
 	updateCameraPos(Vector2.DOWN)
 func left_entered(_body):
+	print("LEft")
 	updateCameraPos(Vector2.LEFT)
 func right_entered(_body):
+	print("RIGHT")
 	updateCameraPos(Vector2.RIGHT)

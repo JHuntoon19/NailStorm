@@ -44,7 +44,7 @@ layer_2/tile_data = PackedInt32Array()
 visible = false
 
 [node name="Dwarf" parent="." index="3"]
-position = Vector2(-162, -214)
+position = Vector2(-162, -210)
 
 [node name="DeathZone" parent="." index="4"]
 position = Vector2(436, 458)

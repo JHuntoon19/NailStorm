@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://bte412s7lqmyw"]
+
+[ext_resource type="Texture2D" uid="uid://6yusxxexo4hj" path="res://graphics/UI/Title2.png" id="1_4s764"]
+[ext_resource type="Script" path="res://Scenes/UI/pause.gd" id="1_tfel4"]
+[ext_resource type="Theme" uid="uid://d0ejecbmplhug" path="res://Scenes/Level/THeme.tres" id="2_kfvhc"]
+
+[node name="Pause" type="CanvasLayer"]
+script = ExtResource("1_tfel4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.0117647, 0.286275, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_4s764")
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Play" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_kfvhc")
+theme_override_font_sizes/font_size = 28
+text = "Play"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Quit" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("2_kfvhc")
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer2/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer3/Quit" to="." method="_on_quit_pressed"]

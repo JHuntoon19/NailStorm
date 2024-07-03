@@ -78,6 +78,17 @@ text = "Use the checkpoint to
  set your spawn"
 horizontal_alignment = 1
 
+[node name="Pause" type="Label" parent="TutorialTexts" index="2"]
+offset_left = 641.0
+offset_top = -100.0
+offset_right = 931.0
+offset_bottom = -59.0
+theme = ExtResource("7_kbehr")
+theme_override_colors/font_color = Color(0.635294, 0.0980392, 0.419608, 1)
+theme_override_font_sizes/font_size = 16
+text = "Press ESC to pause"
+horizontal_alignment = 1
+
 [connection signal="activation" from="Checkpoint" to="." method="_on_checkpoint_activation"]
 [connection signal="activation" from="Checkpoint2" to="." method="_on_checkpoint_2_activation"]
 [connection signal="body_entered" from="LevelLoad" to="." method="_on_level_load_body_entered"]

@@ -215,3 +215,4 @@ position = Vector2(-241, 466)
 [connection signal="activation" from="Checkpoint" to="." method="_on_checkpoint_activation"]
 [connection signal="activation" from="Checkpoint2" to="." method="_on_checkpoint_2_activation"]
 [connection signal="activation" from="Checkpoint3" to="." method="_on_checkpoint_3_activation"]
+[connection signal="body_entered" from="LevelLoad" to="." method="_on_level_load_body_entered"]

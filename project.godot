@@ -13,13 +13,19 @@ config_version=5
 config/name="NailStorm"
 run/main_scene="res://Scenes/UI/main_ui.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=144
+boot_splash/bg_color=Color(0.160784, 0.0117647, 0.286275, 1)
+boot_splash/image="res://graphics/UI/Title2.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1500
 
 [autoload]
 
 Globals="*res://Scripts/Globals.gd"
 TrinityFieldsBegining="*res://Audio/Music/TrinityFieldsBegining.tscn"
 SceneTransition="*res://Scenes/UI/scene_transition.tscn"
+Cover="*res://Scenes/room/cover.tscn"
+CaveMusic="*res://Audio/Music/cave_music.tscn"
 
 [display]
 
