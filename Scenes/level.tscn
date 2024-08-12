@@ -35,6 +35,8 @@ position = Vector2(-16, 203)
 stream = ExtResource("6_34xci")
 
 [node name="RoomTransitionCamera" parent="." instance=ExtResource("4_mka0v")]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="Spikes" type="Node2D" parent="."]
 

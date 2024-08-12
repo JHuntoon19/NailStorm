@@ -4,57 +4,57 @@
 [ext_resource type="Texture2D" uid="uid://c8mb046c4h13y" path="res://graphics/white.png" id="2_iyo3b"]
 [ext_resource type="Script" path="res://Scripts/torch.gd" id="2_v3h4h"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l8ytl"]
-atlas = ExtResource("1_i6m1e")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnvj8"]
-atlas = ExtResource("1_i6m1e")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_237qb"]
-atlas = ExtResource("1_i6m1e")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_00rgu"]
-atlas = ExtResource("1_i6m1e")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mf5bc"]
-atlas = ExtResource("1_i6m1e")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7qkb"]
-atlas = ExtResource("1_i6m1e")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u3xir"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmqg4"]
 atlas = ExtResource("1_i6m1e")
 region = Rect2(96, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8hqqd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc73q"]
+atlas = ExtResource("1_i6m1e")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orknn"]
+atlas = ExtResource("1_i6m1e")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nnc7"]
+atlas = ExtResource("1_i6m1e")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmujd"]
+atlas = ExtResource("1_i6m1e")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w6jq"]
+atlas = ExtResource("1_i6m1e")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d6ke"]
+atlas = ExtResource("1_i6m1e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56hih"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l8ytl")
+"texture": SubResource("AtlasTexture_kmqg4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wnvj8")
+"texture": SubResource("AtlasTexture_nc73q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_237qb")
+"texture": SubResource("AtlasTexture_orknn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_00rgu")
+"texture": SubResource("AtlasTexture_2nnc7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mf5bc")
+"texture": SubResource("AtlasTexture_hmujd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c7qkb")
+"texture": SubResource("AtlasTexture_8w6jq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u3xir")
+"texture": SubResource("AtlasTexture_4d6ke")
 }],
 "loop": true,
 "name": &"default",
@@ -100,14 +100,15 @@ _data = {
 }
 
 [node name="Torch" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_8hqqd")
+sprite_frames = SubResource("SpriteFrames_56hih")
 autoplay = "default"
-frame_progress = 0.895398
+frame_progress = 0.781033
 script = ExtResource("2_v3h4h")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 0.308577, 0.132616, 1)
 energy = 0.35
+shadow_enabled = true
 texture = ExtResource("2_iyo3b")
 texture_scale = 7.0
 

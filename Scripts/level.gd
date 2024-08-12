@@ -9,8 +9,7 @@ func _process(_delta):
 	if(Input.is_action_just_pressed("Quit")):
 		pauseFunc()
 		
-func pauseFunc():
-	
+func pauseFunc():	
 	if(paused):
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		pause.show()
@@ -22,11 +21,13 @@ func pauseFunc():
 	paused = !paused
 #Resets dwarf position to the starting point
 func respawn():
+	#hides any wonky camera switches
 	Cover.hideS($CamDelay.wait_time)
 	$Dwarf.death()
 	$Dwarf.position = Globals.respawnPoint
 	for nail in get_tree().get_nodes_in_group("Nail"):
 		nail.reset()
+		#Starts the timer until the camera can zoom to the player
 	$CamDelay.start()
 #Signal recieved from the death zone
 func _on_death_zone_respawn():
@@ -41,12 +42,11 @@ func _on_room_transition_camera_level_alert():
 func _on_dwarf_respawn_dwarf():
 	respawn()
 
-
+#After a tiny delay under cover this puts the camera onto the dwarf
 func _on_cam_delay_timeout():
 	print("Respawn")
 	$RoomTransitionCamera.position = Globals.respawnCameraPos
 	$RoomTransitionCamera.currentRoom = Globals.respawnCurrentRoom
-
 
 func _on_pause_playing():
 	pauseFunc()

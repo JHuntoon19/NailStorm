@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bqrss0cqs2rsk"]
+[gd_scene load_steps=33 format=3 uid="uid://bqrss0cqs2rsk"]
 
 [ext_resource type="Script" path="res://Scripts/Dwarf.gd" id="1_juyjj"]
 [ext_resource type="Texture2D" uid="uid://bpydoxxve4sia" path="res://graphics/Dwarf1-Sheet.png" id="2_gwuc0"]
@@ -210,6 +210,9 @@ color_ramp = SubResource("GradientTexture1D_tny0h")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6ymp"]
 size = Vector2(12, 11)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b082y"]
+polygon = PackedVector2Array(-3, -11, -7, 1, -5, 12, 5, 12, 7, 5, 5, -8, 1, -11)
+
 [node name="Dwarf" type="CharacterBody2D"]
 top_level = true
 z_index = 2
@@ -295,6 +298,9 @@ one_shot = true
 energy = 0.35
 texture = ExtResource("9_ej0vm")
 texture_scale = 3.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_b082y")
 
 [connection signal="body_entered" from="NailDetection" to="." method="nail_body_entered"]
 [connection signal="body_exited" from="NailDetection" to="." method="_on_nail_detection_body_exited"]
